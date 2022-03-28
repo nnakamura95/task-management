@@ -6,8 +6,8 @@ services:
     environment:
       POSTGRES_USER: task-management
       POSTGRES_PASSWORD: task-management
-      POSTGRES_DB: task-management
+      POSTGRES_DB: task_management
     ports:
-      - '5432:5432'
+      - '15432:5432'
     volumes:
       - ./database/lib/data:/var/lib/postgresql/data
