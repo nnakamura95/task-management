@@ -1,7 +1,0 @@
-#!/bin/sh
-
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-
-cd $CURRENT_DIR/../docker/
-
-docker-compose -f docker-compose-postgres-db.yml -p postgres-db up
