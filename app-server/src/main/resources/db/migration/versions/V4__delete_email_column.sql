@@ -1,2 +1,2 @@
-ALTER TABLE task
+ALTER TABLE tasks
 DROP COLUMN email;
