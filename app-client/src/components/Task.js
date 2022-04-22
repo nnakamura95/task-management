@@ -1,14 +1,19 @@
-import {Badge, Button, Card, Form} from "react-bootstrap";
+import {Badge, Button, Card} from "react-bootstrap";
 import {useState} from "react";
 import TaskEditModal from "./TaskEditModal";
+import TaskDeletionModal from "./TaskDeletionModal";
 
 
 const Task = (props) => {
 
     const [show, setShow] = useState(false);
+    const [showTaskDeletionModal, setShowTaskDeletionModal] = useState(false);
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+
+    const showDeletionModalHandler = () => setShowTaskDeletionModal(true);
+    const hideDeletionModal = () => setShowTaskDeletionModal(false);
 
     let statusColor;
     if (props.status === "in-progress") {
@@ -34,6 +39,8 @@ const Task = (props) => {
                     </h4>
                     <hr/>
                     <Button onClick={handleShow}>Edit</Button>
+                    {"  "}
+                    <Button variant="success" onClick={showDeletionModalHandler}>Delete</Button>
                 </Card.Body>
             </Card>
 
@@ -45,6 +52,11 @@ const Task = (props) => {
                 description={props.description}
                 dateOfAccomplishing={props.dateOfAccomplishing}
                 status={props.status}
+            />
+            <TaskDeletionModal
+                onShow={showTaskDeletionModal}
+                onClose={hideDeletionModal}
+                id={props.id}
             />
         </>
     );
