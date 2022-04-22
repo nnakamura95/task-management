@@ -25,8 +25,8 @@ public class TaskDatasource implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAllTask() {
-        return taskMapper.getAllTask();
+    public List<Task> getAllTasks() {
+        return taskMapper.getAllTasks();
     }
 
     @Override
