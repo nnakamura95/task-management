@@ -13,9 +13,10 @@ const TaskDeletionModal = (props) => {
 
         const deleteRequest = new TaskApiConnection();
 
-        dispatch(taskActions.removeTaskFromTaskList(props.id));
-
-        await deleteRequest.deleteTask(props.id);
+        await deleteRequest.deleteTask(props.id)
+            .then(
+                () => dispatch(taskActions.removeTaskFromTaskList(props.id))
+            );
 
         props.onClose();
     };
