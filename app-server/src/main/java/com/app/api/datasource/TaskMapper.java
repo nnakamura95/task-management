@@ -10,7 +10,7 @@ public interface TaskMapper {
 
     Task getTask(long id);
 
-    List<Task> getAllTask();
+    List<Task> getAllTasks();
 
     void saveNewTask(Task task);
 
