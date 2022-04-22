@@ -2,6 +2,7 @@ package com.app.api.service;
 
 import com.app.api.datasource.TaskDatasource;
 import com.app.api.domain.Task;
+import com.app.api.exceptions.TaskNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +29,13 @@ public class TaskService {
 
     public void saveNewTask(Task task) {
 
-        Task validateTask = Optional.ofNullable(task)
-                .orElseThrow(RuntimeException::new);
-        taskDatasource.saveNewTask(validateTask);
+        Task validateDTask = Optional.ofNullable(task)
+                .orElseThrow(() -> new TaskNotFoundException("Task cannot be null or empty"));
+        taskDatasource.saveNewTask(validateDTask);
     }
 
-    public List<Task> getAllTask() {
-        return taskDatasource.getAllTask();
+    public List<Task> getAllTasks() {
+        return taskDatasource.getAllTasks();
     }
 
     public void deleteTask(int id) {
