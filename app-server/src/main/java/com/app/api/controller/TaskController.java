@@ -23,14 +23,16 @@ public class TaskController {
         return taskService.getTask(id);
     }
 
+
     @GetMapping("/task")
-    private List<Task> getAllTask() {
-        return taskService.getAllTask();
+    private List<Task> getAllTasks() {
+        return taskService.getAllTasks();
     }
 
     @PostMapping("/task")
-    private void saveNewTask(@RequestBody Task task) {
+    private Task saveNewTask(@RequestBody Task task) {
         taskService.saveNewTask(task);
+        return task;
     }
 
     @DeleteMapping("/task/{id}")
