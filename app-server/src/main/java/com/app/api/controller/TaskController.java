@@ -23,7 +23,6 @@ public class TaskController {
         return taskService.getTask(id);
     }
 
-
     @GetMapping("/task")
     private List<Task> getAllTasks() {
         return taskService.getAllTasks();
@@ -40,8 +39,8 @@ public class TaskController {
         taskService.deleteTask(id);
     }
 
-    @PutMapping("/task/update/{id}")
-    private Task updateTask(@RequestBody Task task, @PathVariable int id) {
+    @PutMapping("/task/{id}")
+    private Task updateTask(@PathVariable int id, @RequestBody Task task) {
         task.setId(id);
         taskService.updateTask(task);
         return taskService.getTask(id);

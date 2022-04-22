@@ -27,12 +27,27 @@ const taskSlicer = createSlice(
                     }
                 );
             },
-            updateTaskList(state, action) {},
-            removeTaskFromTaskList() {},
-            updateTask() {},
+            removeTaskFromTaskList(state, action) {
+                //TODO: temporary action, it needs to be fix
+                const taskId = action.payload;
+                const index = state.taskList.findIndex(task => task.id === taskId);
+                state.taskList.splice(index, 1);
+            },
+            updateTaskFromTaskList(state, action) {
+                const updateTask = action.payload;
+                const index = state.taskList.findIndex(task => task.id === updateTask.id);
+                state.taskList[index] = {
+                            id: updateTask.id,
+                            title: updateTask.title,
+                            description: updateTask.description,
+                            dateOfAccomplishing: updateTask.dateOfAccomplishing,
+                            status: updateTask.status,
+                            userId: updateTask.userId
+                };
+            },
             fetchTaskList(state, action) {
                 const data = action.payload;
-                state.taskList = [...data]
+                state.taskList = [...data];
             }
         }
     }

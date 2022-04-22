@@ -5,7 +5,7 @@ class TaskApiConnection {
 
     getTask = async (id) => {
         const http = new AxiosConfig();
-        const response = await http.getRequest(this.apiUrl + "/" + id);
+        const response = await http.getRequest(`${this.apiUrl}/${id}`);
         return response.data;
     };
 
@@ -23,13 +23,13 @@ class TaskApiConnection {
 
     updateTask = async (id, task) => {
         const http = new AxiosConfig();
-        const response = await http.putRequest(this.apiUrl + "/" + id, task);
+        const response = await http.putRequest(`${this.apiUrl}/${id}`, task);
         return response.data;
     };
 
     deleteTask = async (id) => {
         const http = new AxiosConfig();
-        await http.deleteRequest(this.apiUrl + "/" + id);
+        await http.deleteRequest(`${this.apiUrl}/${id}`);
     };
 }
 
