@@ -1,6 +1,6 @@
 
 
-CREATE TABLE IF NOT EXISTS task
+CREATE TABLE IF NOT EXISTS tasks
 (
     id         bigint primary key,
     title varchar NOT NULL,
