@@ -1,3 +1,5 @@
 .DC_store
 .idea
 .vscode
+
+/docker/database/
