@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.api.datasource.UserAccountMapper">
+    <resultMap id="Task" type="com.app.api.domain.UserAccount">
+        <id property="id" column="id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="emailAddress" column="email_address"/>
+        <result property="password" column="password"/>
+        <result property="dateOfBirth" column="date_of_birth"/>
+    </resultMap>
+
+    <select id="getUserInfo" resultMap="Task">
+        SELECT *
+        FROM user_account
+        WHERE id = #{id}
+    </select>
+
+    <select id="getAllUserInfo" resultMap="Task">
+        SELECT *
+        FROM user_account
+    </select>
+
+    <insert id="registerUserInfo">
+        INSERT INTO user_account(first_name, last_name, email_address, password, date_of_birth)
+            VALUE
+        (#{id}, #{firstName}, #{lastName}, #{emailAddress}, #{password}, #{dateOfBirth})
+    </insert>
+
+    <delete id="deleteTask">
+        DELETE
+        FROM task
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -35,10 +35,17 @@ public class TaskService {
     }
 
     public List<Task> getAllTasks() {
-        return taskDatasource.getAllTasks();
+        List<Task> taskList = taskDatasource.getAllTasks();
+        if (taskList.isEmpty()) {
+            throw new TaskNotFoundException("No collections of tasks exist");
+        }
+         return taskList;
     }
 
     public void deleteTask(int id) {
+        Task task = taskDatasource.getTask(id);
+        Optional.ofNullable(task)
+                .orElseThrow(() -> new TaskNotFoundException("Task does not exist"));
         taskDatasource.deleteTask(id);
     }
 
